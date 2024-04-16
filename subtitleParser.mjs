@@ -16,19 +16,8 @@ export async function parseSubtitles(sub_file_path) {
         // Parse the subtitle data
         const tree = parser.parse(subtitleData, 'descriptions');
         
+        // If the tree has cues
         if(tree.cues) {
-            //console.log(tree.cues.slice(0, 10));
-            // lets make a json object with the start times and text of the subtitles
-            /*
-            const subtitles = tree.cues.map(cue => {
-                return {
-                    start: cue.startTime,
-                    end: cue.endTime,
-                    text: cue.text
-                }
-            });
-            console.log(subtitles.slice(0, 5));
-            */
             
             // Create an array of subtitle objects
             const subtitles = [];
@@ -52,6 +41,7 @@ export async function parseSubtitles(sub_file_path) {
             return subtitles;
         }
     } catch (error) {
+        // otherwise, log the error and return null
         console.error('Failed to parse subtitles:', error);
         return null;
     }
