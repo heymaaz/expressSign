@@ -2,3 +2,5 @@
 /node_modules
 /rawInfo.json
 /subtitles
+/glosses
+.DS_Store

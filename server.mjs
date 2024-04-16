@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { downloadSubtitles } from './ytdlp.mjs';
 import { parseSubtitles } from './subtitleParser.mjs';
+import { subToGloss } from './subToGloss.mjs';
 
 // Create a new express application instance
 
@@ -50,7 +51,13 @@ app.get('/gloss/:videoID', async (req, res) => {
         res.json(errorParse);
         return;
     }
-    res.json(subtitles);
+    // get the glosses json using subToGloss function
+    const glosses = await subToGloss(subtitles, req.params.videoID);
+    if (!glosses) {
+        res.json({ error: 'Failed to get glosses' });
+        return;
+    }
+    res.json(glosses);
 });
 
 // Start the Express server
