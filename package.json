@@ -1,0 +1,21 @@
+{
+  "name": "expresssign",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "glob": "^10.3.12",
+    "openai": "^4.35.0",
+    "webvtt-parser": "^2.2.0",
+    "youtube-dl-exec": "^3.0.0"
+  }
+}
