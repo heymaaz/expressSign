@@ -19,8 +19,6 @@ async function convertJsonToJsonl(inputFilePath, outputFilePath) {
     }
 }
 
-// Usage example (you can modify the paths as needed)
-//convertJsonToJsonl('Sign Mappings/updated_mappings.json', 'Sign Mappings/updated_mappings.jsonl');
 
 let signs = await fs.readFile('Sign Mappings/updated_mappings.json', 'utf8')
 // get the keys of the json object

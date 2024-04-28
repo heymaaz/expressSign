@@ -4,8 +4,6 @@ import { downloadSubtitles } from './ytdlp.mjs';
 import { parseSubtitles } from './subtitleParser.mjs';
 import { subToGloss } from './subToGloss.mjs';
 import { getSignVideosFromGlosses } from './getSignVideosFromGlosses.mjs';
-import e from 'express';
-import fs from 'fs';
 
 // Create a new express application instance
 
@@ -112,35 +110,6 @@ app.get('/signed/:videoID', async (req, res) => {
         const queue = await getSignVideosFromGlosses(glosses);
         res.json(queue);
 
-        // let now = new Date();
-        // console.log(`${now.toISOString()} ${req.method} ${req.url} ${glosses.length} glosses`);
-        // let signVideosDictionary = {};
-        // fs.readFile('Sign Mappings/updated_mappings.json', 'utf8', (err, signs) => {
-        //     if (err) {
-        //       console.error(err);
-        //       return;
-        //     }
-        //     signVideosDictionary = JSON.parse(signs);
-        //     let queue = {};
-        //     glosses.forEach(item => {
-        //         let start = item.start;
-        //         let end = item.end;
-        //         let gloss = item.gloss.replaceAll(/[^a-zA-Z0-9 ]/g, "");
-        //         const words = gloss.split(" ");
-        //         let videos = words.map(word => signVideosDictionary[word.toLowerCase()] || word);
-        //         for(let i=0; i<videos.length; i++){
-        //             if(videos[i] === words[i]){
-        //                 //finger spell the word
-        //                 const chars = videos[i].split("");
-        //                 videos[i] = chars.map(char => signVideosDictionary[char.toLowerCase()] || char);
-        //             }
-        //         }
-        //         videos = videos.flat();//flatten the array
-        //         queue[start] = videos;
-        //     });
-        //     res.json(queue);  
-        // });
-        
     } catch (error) {
         console.error(error);  // Log the error
         res.status(500).json({ error: error.message });  // Send error message and status code
