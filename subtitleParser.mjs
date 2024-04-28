@@ -17,6 +17,8 @@ export async function parseSubtitles(sub_file_path) {
         const tree = parser.parse(subtitleData, 'descriptions');
         
         // If the tree has cues
+        // cues are the subtitle objects
+        // https://developer.mozilla.org/en-US/docs/Web/API/VTTCue
         if(tree.cues) {
             
             // Create an array of subtitle objects
@@ -38,6 +40,7 @@ export async function parseSubtitles(sub_file_path) {
                 }
             });
             // return the subtitles array
+            console.log("Number of subtitles: "+subtitles.length);
             return subtitles;
         }
     } catch (error) {

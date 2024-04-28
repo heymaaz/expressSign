@@ -31,7 +31,7 @@ export async function downloadSubtitles(url) {
 
         let files = glob.sync(subtitleFilePattern);
         if (files.length > 0) {
-            //console.log('Subtitle file already exists:', files[0]);
+            console.log('Subtitle file already exists:', files[0]);
             return files[0];
         } else {
             const commandOptions = {
